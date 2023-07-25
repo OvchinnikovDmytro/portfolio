@@ -1,0 +1,42 @@
+0000	data segment
+0000	15	var1 db 10101b
+0001	1A2B	var2 dw 1a2bh
+0003	001D5171	var3 dd 1921393
+0007	data ends
+    	
+0000	code1 segment
+    	assume cs:code1, ds:data
+0000	FD	std
+0001	lbl1:
+0001	53	push ebx
+0002	65: 8F 05 00000003r	pop gs:var3
+0009	76 F6	jna lbl1
+000B	76 0B 90 90 90 90	jna lbl2
+0011	EA 00000000sr	jmp far ptr lbl3
+0018	lbl2:
+0018	1A D1	sbb dl, cl
+001A	1B C4	sbb eax, esp
+001C	64: 0F AF 1C B5 00000003r	imul ebx, fs:var3[esi*4]
+0025	code1 ends
+    	
+0000	code2 segment
+    	assume cs:code2, ds:data
+0000	lbl3:
+0000	38 14 55 00000000r	cmp var1[edx*2], dl
+0007	39 1C 85 00000003r	cmp var3[eax*4], ebx
+000E	80 15 00000000r FF	adc var1, -1
+0015	80 15 00000000r 15	adc var1, 10101b
+001C	83 14 DD 00000003r 3F	adc var3[ebx*8], 3fh
+0024	81 15 00000003r 00012FD1	adc var3, 77777
+002E	EA 00000018sr	jmp far ptr lbl2
+0035	code2 ends
+    	end
+
+
+Symbols table:
+Name:VAR1	Segment: DATA	Size:BYTE	Offset:0000
+Name:VAR2	Segment: DATA	Size:WORD	Offset:0001
+Name:VAR3	Segment: DATA	Size:DWORD	Offset:0003
+Name:LBL1	Segment:CODE1	Offset:0001
+Name:LBL2	Segment:CODE1	Offset:0018
+Name:LBL3	Segment:CODE2	Offset:0000

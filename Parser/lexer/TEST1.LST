@@ -1,0 +1,93 @@
+Turbo Assembler	 Version 2.51	     30/05/23 19:37:16	    Page 1
+test1.asm
+
+
+
+      1	0000			     data segment
+      2	0000  15		     var1 db 10101b
+      3	0001  1A2B		     var2 dw 1a2bh
+      4	0003  001D5171		     var3 dd 1921393
+      5	0007			     data ends
+      6
+      7	0000			     code1 segment
+      8				     assume cs:code1, ds:data
+      9	0000  FD		     std
+     10	0001			     lbl1:
+     11	0001  FF 36 0000	     push ebx
+**Error** test1.asm(11)	Undefined symbol: EBX
+     12	0005  8F 06 0003 8F 06	  +  pop gs:var3
+     13	      0005
+**Error** test1.asm(12)	Undefined symbol: GS
+     14	000D  76 F2		     jna lbl1
+     15	000F  76 05		     jna lbl2
+     16	0011  EA 00000000sr	     jmp far ptr lbl3
+     17	0016			     lbl2:
+     18	0016  1A D1		     sbb dl, cl
+     19	0018  81 1E 0000 0000	     sbb eax, esp
+**Error** test1.asm(18)	Undefined symbol: EAX
+*Warning* test1.asm(18)	Argument needs type override
+     20	001E  F7 2E 0000	     imul ebx, fs:var3[esi*4]
+**Error** test1.asm(19)	Undefined symbol: EBX
+*Warning* test1.asm(19)	Argument needs type override
+     21	0022			     code1 ends
+     22
+     23	0000			     code2 segment
+     24				     assume cs:code2, ds:data
+     25	0000			     lbl3:
+     26	0000  38 16 0000	     cmp var1[edx*2], dl
+**Error** test1.asm(25)	Undefined symbol: EDX
+     27	0004  81 3E 0003 0000	     cmp var3[eax*4], ebx
+**Error** test1.asm(26)	Undefined symbol: EAX
+     28	000A  80 16 0000r FF	     adc var1, -1
+     29	000F  80 16 0000r 15	     adc var1, 10101b
+     30	0014  83 16 0003 3F	     adc var3[ebx*8], 3fh
+**Error** test1.asm(29)	Undefined symbol: EBX
+     31	0019  83 16 0003r 00	     adc var3, 77777
+**Error** test1.asm(30)	Argument to operation or instruction has illegal size
+     32	001E  EA 00000016sr	     jmp far ptr lbl2
+     33	0023			     code2 ends
+     34				     end
+Turbo Assembler	 Version 2.51	     30/05/23 19:37:16	    Page 2
+Symbol Table
+
+
+
+
+Symbol Name		Type   Value			   Cref	(defined at #)
+
+??DATE			Text   "30/05/23"
+??FILENAME		Text   "test1	"
+??TIME			Text   "19:37:16"
+??VERSION		Number 0205
+@CPU			Text   0101H
+@CURSEG			Text   CODE2			   #1  #7  #23
+@FILENAME		Text   TEST1
+@WORDSIZE		Text   2			   #1  #7  #23
+LBL1			Near   CODE1:0001		   #10	14
+LBL2			Near   CODE1:0016		   15  #17  32
+LBL3			Near   CODE2:0000		   16  #25
+VAR1			Byte   DATA:0000		   #2  26  28  29
+VAR2			Word   DATA:0001		   #3
+VAR3			Dword  DATA:0003		   #4  12  27  30  31
+
+Groups & Segments	Bit Size Align	Combine	Class	   Cref	(defined at #)
+
+CODE1			16  0022 Para	none		   #7  8
+CODE2			16  0023 Para	none		   #23	24
+DATA			16  0007 Para	none		   #1  8  24
+Turbo Assembler	 Version 2.51	     30/05/23 19:37:16	    Page 3
+Error Summary
+
+
+
+**Error** test1.asm(11)	Undefined symbol: EBX
+**Error** test1.asm(12)	Undefined symbol: GS
+**Error** test1.asm(18)	Undefined symbol: EAX
+*Warning* test1.asm(18)	Argument needs type override
+**Error** test1.asm(19)	Undefined symbol: EBX
+*Warning* test1.asm(19)	Argument needs type override
+**Error** test1.asm(25)	Undefined symbol: EDX
+**Error** test1.asm(26)	Undefined symbol: EAX
+**Error** test1.asm(29)	Undefined symbol: EBX
+**Error** test1.asm(30)	Argument to operation or instruction has illegal size
+

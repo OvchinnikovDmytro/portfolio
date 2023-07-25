@@ -1,0 +1,83 @@
+Turbo Assembler	 Version 2.51	     30/05/23 19:37:25	    Page 1
+test2.asm
+
+
+
+      1					 .486
+      2
+      3	00000000			 data segment
+*Warning* test2.asm(3) Assuming	segment	is 32-bit
+      4	00000000  15			 var1 db 10101b
+      5	00000001  1A2B			 var2 dw 1a2bh
+      6	00000003  001D5171		 var3 dd 1921393
+      7	00000007			 data ends
+      8
+      9	00000000			 code1 segment
+*Warning* test2.asm(9) Assuming	segment	is 32-bit
+     10					 assume	cs:code1, ds:data
+     11	00000000  FD			 std
+     12	00000001			 lbl1:
+     13	00000001  53			 push ebx
+     14	00000002  65: 8F 05 00000003r	 pop gs:var3
+     15	00000009  76 F6			 jna lbl1
+     16	0000000B  76 0B	90 90 90 90	 jna lbl2
+     17	00000011  EA 000000000000sr	 jmp far ptr lbl3
+     18	00000018			 lbl2:
+     19	00000018  1A D1			 sbb dl, cl
+     20	0000001A  1B C4			 sbb eax, esp
+     21	0000001C  64: 0F AF 1C B5     +	 imul ebx, fs:var3[esi*4]
+     22		  00000003r
+     23	00000025			 code1 ends
+     24
+     25	00000000			 code2 segment
+*Warning* test2.asm(24)	Assuming segment is 32-bit
+     26					 assume	cs:code2, ds:data
+     27	00000000			 lbl3:
+     28	00000000  38 14	55 00000000r	 cmp var1[edx*2], dl
+     29	00000007  39 1C	85 00000003r	 cmp var3[eax*4], ebx
+     30	0000000E  80 15	00000000r FF	 adc var1, -1
+     31	00000015  80 15	00000000r 15	 adc var1, 10101b
+     32	0000001C  83 14	DD 00000003r  +	 adc var3[ebx*8], 3fh
+     33		  3F
+     34	00000024  81 15	00000003r     +	 adc var3, 77777
+     35		  00012FD1
+     36	0000002E  EA 000000000018sr	 jmp far ptr lbl2
+     37	00000035			 code2 ends
+     38					 end
+Turbo Assembler	 Version 2.51	     30/05/23 19:37:25	    Page 2
+Symbol Table
+
+
+
+
+Symbol Name		Type   Value			   Cref	(defined at #)
+
+??DATE			Text   "30/05/23"
+??FILENAME		Text   "test2	"
+??TIME			Text   "19:37:25"
+??VERSION		Number 0205
+@CPU			Text   0D1FH			   #1
+@CURSEG			Text   CODE2			   #3  #9  #25
+@FILENAME		Text   TEST2
+@WORDSIZE		Text   4			   #1  #3  #9  #25
+LBL1			Near   CODE1:0001		   #12	15
+LBL2			Near   CODE1:0018		   16  #18  36
+LBL3			Near   CODE2:0000		   17  #27
+VAR1			Byte   DATA:0000		   #4  28  30  31
+VAR2			Word   DATA:0001		   #5
+VAR3			Dword  DATA:0003		   #6  14  21  29  32  34
+
+Groups & Segments	Bit Size Align	Combine	Class	   Cref	(defined at #)
+
+CODE1			32  0025 Para	none		   #9  10
+CODE2			32  0035 Para	none		   #25	26
+DATA			32  0007 Para	none		   #3  10  26
+Turbo Assembler	 Version 2.51	     30/05/23 19:37:25	    Page 3
+Error Summary
+
+
+
+*Warning* test2.asm(3) Assuming	segment	is 32-bit
+*Warning* test2.asm(9) Assuming	segment	is 32-bit
+*Warning* test2.asm(24)	Assuming segment is 32-bit
+

@@ -1,0 +1,6 @@
+﻿  lexer.cpp
+D:\Univer\Course_2_semestr2\asm\course2\res\lexer\lexer\LexAnalyse.h(56,36): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Univer\Course_2_semestr2\asm\course2\res\lexer\lexer\LexAnalyse.h(102,119): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Univer\Course_2_semestr2\asm\course2\res\lexer\lexer\LexAnalyse.h(133,27): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Univer\Course_2_semestr2\asm\course2\res\lexer\lexer\LexAnalyse.h(281,33): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+  lexer.vcxproj -> D:\Univer\Course_2_semestr2\asm\course2\res\lexer\x64\Debug\lexer.exe

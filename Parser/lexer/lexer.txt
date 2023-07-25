@@ -1,0 +1,188 @@
+1) data segment
+	1) 'DATA' (4) identifier
+	2) 'SEGMENT' (7) directive
+	 Sentence struct: (label: 1, 1) ,(mnem: 2, 1) ,
+2) var1 db 10101b
+	1) 'VAR1' (4) identifier
+	2) 'DB' (2) var-size
+	3) '10101B' (6) imm_bin
+	 Sentence struct: (label: 1, 1) ,(mnem: 2, 1) ,(op: 3, 1) , 
+3) var2 dw 1a2bh
+	1) 'VAR2' (4) identifier
+	2) 'DW' (2) var-size
+	3) '1A2BH' (5) imm_hex
+	 Sentence struct: (label: 1, 1) ,(mnem: 2, 1) ,(op: 3, 1) , 
+4) var3 dd 1921393
+	1) 'VAR3' (4) identifier
+	2) 'DD' (2) var-size
+	3) '1921393' (7) imm_dec
+	 Sentence struct: (label: 1, 1) ,(mnem: 2, 1) ,(op: 3, 1) , 
+5) data ends
+	1) 'DATA' (4) identifier
+	2) 'ENDS' (4) directive
+	 Sentence struct: (label: 1, 1) ,(mnem: 2, 1) ,
+6) 
+	 Sentence struct: pusto
+7) code1 segment
+	1) 'CODE1' (5) identifier
+	2) 'SEGMENT' (7) directive
+	 Sentence struct: (label: 1, 1) ,(mnem: 2, 1) ,
+8) assume cs:code1, ds:data
+	1) 'ASSUME' (6) directive
+	2) 'CS' (2) seg-reg
+	3) ':' (1) symbol
+	4) 'CODE1' (5) identifier
+	5) ',' (1) symbol
+	6) 'DS' (2) seg-reg
+	7) ':' (1) symbol
+	8) 'DATA' (4) identifier
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 3) , (op: 6, 3) , 
+9) std
+	1) 'STD' (3) command
+	 Sentence struct: (mnem: 1, 1) ,
+10) lbl1:
+	1) 'LBL1' (4) identifier
+	2) ':' (1) symbol
+	 Sentence struct: (label: 1, 1) ,
+11) push ebx
+	1) 'PUSH' (4) command
+	2) 'EBX' (3) reg32
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 1) , 
+12) pop gs:var3
+	1) 'POP' (3) command
+	2) 'GS' (2) seg-reg
+	3) ':' (1) symbol
+	4) 'VAR3' (4) identifier
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 3) , 
+13) jna lbl1
+	1) 'JNA' (3) command
+	2) 'LBL1' (4) identifier
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 1) , 
+14) jna lbl2
+	1) 'JNA' (3) command
+	2) 'LBL2' (4) identifier
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 1) , 
+15) jmp far ptr lbl3
+	1) 'JMP' (3) command
+	2) 'FAR' (3) var-size
+	3) 'PTR' (3) directive
+	4) 'LBL3' (4) identifier
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 3) , 
+16) lbl2:
+	1) 'LBL2' (4) identifier
+	2) ':' (1) symbol
+	 Sentence struct: (label: 1, 1) ,
+17) sbb dl, cl
+	1) 'SBB' (3) command
+	2) 'DL' (2) reg8
+	3) ',' (1) symbol
+	4) 'CL' (2) reg8
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 1) , (op: 4, 1) , 
+18) sbb eax, esp
+	1) 'SBB' (3) command
+	2) 'EAX' (3) reg32
+	3) ',' (1) symbol
+	4) 'ESP' (3) reg32
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 1) , (op: 4, 1) , 
+19) imul ebx, fs:var3[esi*4]
+	1) 'IMUL' (4) command
+	2) 'EBX' (3) reg32
+	3) ',' (1) symbol
+	4) 'FS' (2) seg-reg
+	5) ':' (1) symbol
+	6) 'VAR3' (4) identifier
+	7) '[' (1) symbol
+	8) 'ESI' (3) reg32
+	9) '*' (1) symbol
+	10) '4' (1) imm_dec
+	11) ']' (1) symbol
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 1) , (op: 4, 8) , 
+20) code1 ends
+	1) 'CODE1' (5) identifier
+	2) 'ENDS' (4) directive
+	 Sentence struct: (label: 1, 1) ,(mnem: 2, 1) ,
+21) 
+	 Sentence struct: pusto
+22) code2 segment
+	1) 'CODE2' (5) identifier
+	2) 'SEGMENT' (7) directive
+	 Sentence struct: (label: 1, 1) ,(mnem: 2, 1) ,
+23) assume cs:code2, ds:data
+	1) 'ASSUME' (6) directive
+	2) 'CS' (2) seg-reg
+	3) ':' (1) symbol
+	4) 'CODE2' (5) identifier
+	5) ',' (1) symbol
+	6) 'DS' (2) seg-reg
+	7) ':' (1) symbol
+	8) 'DATA' (4) identifier
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 3) , (op: 6, 3) , 
+24) lbl3:
+	1) 'LBL3' (4) identifier
+	2) ':' (1) symbol
+	 Sentence struct: (label: 1, 1) ,
+25) cmp var1[edx*2], dl
+	1) 'CMP' (3) command
+	2) 'VAR1' (4) identifier
+	3) '[' (1) symbol
+	4) 'EDX' (3) reg32
+	5) '*' (1) symbol
+	6) '2' (1) imm_dec
+	7) ']' (1) symbol
+	8) ',' (1) symbol
+	9) 'DL' (2) reg8
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 6) , (op: 9, 1) , 
+26) cmp var3[eax*4], ebx
+	1) 'CMP' (3) command
+	2) 'VAR3' (4) identifier
+	3) '[' (1) symbol
+	4) 'EAX' (3) reg32
+	5) '*' (1) symbol
+	6) '4' (1) imm_dec
+	7) ']' (1) symbol
+	8) ',' (1) symbol
+	9) 'EBX' (3) reg32
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 6) , (op: 9, 1) , 
+27) adc var1, -1
+	1) 'ADC' (3) command
+	2) 'VAR1' (4) identifier
+	3) ',' (1) symbol
+	4) '-' (1) symbol
+	5) '1' (1) imm_dec
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 1) , (op: 4, 2) , 
+28) adc var1, 10101b
+	1) 'ADC' (3) command
+	2) 'VAR1' (4) identifier
+	3) ',' (1) symbol
+	4) '10101B' (6) imm_bin
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 1) , (op: 4, 1) , 
+29) adc var3[ebx*8], 3fh
+	1) 'ADC' (3) command
+	2) 'VAR3' (4) identifier
+	3) '[' (1) symbol
+	4) 'EBX' (3) reg32
+	5) '*' (1) symbol
+	6) '8' (1) imm_dec
+	7) ']' (1) symbol
+	8) ',' (1) symbol
+	9) '3FH' (3) imm_hex
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 6) , (op: 9, 1) , 
+30) adc var3, 77777
+	1) 'ADC' (3) command
+	2) 'VAR3' (4) identifier
+	3) ',' (1) symbol
+	4) '77777' (5) imm_dec
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 1) , (op: 4, 1) , 
+31) jmp far ptr lbl2
+	1) 'JMP' (3) command
+	2) 'FAR' (3) var-size
+	3) 'PTR' (3) directive
+	4) 'LBL2' (4) identifier
+	 Sentence struct: (mnem: 1, 1) ,(op: 2, 3) , 
+32) code2 ends
+	1) 'CODE2' (5) identifier
+	2) 'ENDS' (4) directive
+	 Sentence struct: (label: 1, 1) ,(mnem: 2, 1) ,
+33) end
+	1) 'END' (3) directive
+	 Sentence struct: (mnem: 1, 1) ,

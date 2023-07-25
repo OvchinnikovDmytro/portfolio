@@ -1,0 +1,33 @@
+000000	data segment
+000000	var1 db 10101b
+000001	var2 dw 1a2bh
+000003	var3 dd 1921393
+000007	data ends
+    	
+000000	code1 segment
+    	assume cs:code1, ds:data
+000000	std
+000001	lbl1:
+000001	push ebx
+000002	pop gs:var3
+000009	jna lbl1
+00000B	jna lbl2
+000011	jmp far ptr lbl3
+000018	lbl2:
+000018	sbb dl, cl
+00001A	sbb eax, esp
+00001C	imul ebx, fs:var3[esi*4]
+000025	code1 ends
+    	
+000000	code2 segment
+    	assume cs:code2, ds:data
+000000	lbl3:
+000000	cmp var1[edx*2], dl
+000007	cmp var3[eax*4], ebx
+00000E	adc var1, -1
+000015	adc var1, 10101b
+00001C	adc var3[ebx*8], 3fh
+000024	adc var3, 77777
+00002E	jmp far ptr lbl2
+000035	code2 ends
+    	end
