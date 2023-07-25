@@ -1,0 +1,62 @@
+# depslib dependency file v1.0
+1652607052 source:d:\univer\course_2_semestr2\kv-14_ovchinnikov\fillarray.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"FillArray.h"
+	"Menu.h"
+
+1651218885 d:\univer\course_2_semestr2\kv-14_ovchinnikov\fillarray.h
+
+1651845833 d:\univer\course_2_semestr2\kv-14_ovchinnikov\menu.h
+
+1651829059 source:d:\univer\course_2_semestr2\kv-14_ovchinnikov\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Menu.h"
+
+1651058760 source:d:\univer\course_2_semestr2\kv-14_ovchinnikov\measurement.c
+	"Measurement.h"
+	<stdio.h>
+
+1651058760 d:\univer\course_2_semestr2\kv-14_ovchinnikov\measurement.h
+	<time.h>
+
+1652619603 source:d:\univer\course_2_semestr2\kv-14_ovchinnikov\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<conio.h>
+	"OutTable.h"
+	"FillArray.h"
+	"Measurement.h"
+	"Sort.h"
+	"Test.h"
+	"Menu.h"
+
+1651231619 d:\univer\course_2_semestr2\kv-14_ovchinnikov\outtable.h
+
+1651218885 d:\univer\course_2_semestr2\kv-14_ovchinnikov\sort.h
+
+1651162853 d:\univer\course_2_semestr2\kv-14_ovchinnikov\test.h
+
+1651398763 source:d:\univer\course_2_semestr2\kv-14_ovchinnikov\outtable.c
+	<stdio.h>
+	<stdlib.h>
+	"OutTable.h"
+
+1652344115 source:d:\univer\course_2_semestr2\kv-14_ovchinnikov\sort.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"Sort.h"
+
+1651824274 source:d:\univer\course_2_semestr2\kv-14_ovchinnikov\test.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"Test.h"
+	"FillArray.h"
+	"OutTable.h"
+	"Menu.h"
+
